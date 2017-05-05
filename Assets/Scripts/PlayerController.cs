@@ -6,28 +6,37 @@ public class PlayerController : MonoBehaviour {
 
     public bool hidden;
 
-    public Color color;
+    public Material Red;
+    public Material Green;
+
     public float speed = 6.0F;
     private Vector3 moveDirection = Vector3.zero;
 
+    MeshRenderer ren;
+
+    void Start()
+    {
+        ren = GetComponent<MeshRenderer>();
+        ren.enabled = true;
+    }
+
     void Update()
     {
-        CharacterController controller = GetComponent<CharacterController>();
+        Rigidbody2D controller = GetComponent<Rigidbody2D>();
 
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        controller.Move(moveDirection * Time.deltaTime);
-
+        Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
+        controller.velocity = movment * speed;
 
 
         if (Input.GetButtonDown("A"))
         {
-            
-        }else if (Input.GetButtonDown("A"))
+            ren.sharedMaterial = Green;
+        }else if (Input.GetButtonDown("B"))
         {
-
+            ren.sharedMaterial = Red;
         }
     }
 
