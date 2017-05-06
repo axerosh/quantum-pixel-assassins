@@ -9,8 +9,9 @@ public class CameraController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
         GetComponent<Animator>().SetBool("Rotate", rotate);
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Update is called once per frame

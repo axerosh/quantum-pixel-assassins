@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerSpot : MonoBehaviour {
 
@@ -67,7 +66,16 @@ public class PlayerSpot : MonoBehaviour {
         {
             hasDetected = false;
             Debug.Log("Spotted");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            foreach (GameObject g in playersInVision)
+            {
+                if (!g.GetComponent<PlayerController>().hidden)
+                {
+                    //Tell main camera to do animation
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraController>().SpotPlayer(g.gameObject);
+                    break;
+                }
+            }
         }
     }
 }
