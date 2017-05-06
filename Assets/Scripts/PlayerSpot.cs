@@ -19,7 +19,6 @@ public class PlayerSpot : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Enter");
         if (other.gameObject.tag == "Player"){
             playersInVision.Add(other.gameObject);
         }
@@ -32,7 +31,6 @@ public class PlayerSpot : MonoBehaviour {
             {
                 if (g == other.gameObject)
                 {
-                    Debug.Log("Leave");
                     playersInVision.Remove(g);
                     break;
                 }

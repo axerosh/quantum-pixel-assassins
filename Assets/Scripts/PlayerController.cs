@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 
     MeshRenderer ren;
 
+    private RaycastHit groundHit;
+
     void Start()
     {
         ren = GetComponent<MeshRenderer>();
@@ -37,6 +39,19 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetButtonDown("B1"))
         {
             ren.sharedMaterial = Red;
+        }
+
+        //Check color under player
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 1), new Vector3(0, 0, 1), out groundHit))
+        {
+            if (groundHit.transform.gameObject.GetComponent<Renderer>().sharedMaterial == gameObject.GetComponent<Renderer>().sharedMaterial)
+            {
+                hidden = true;
+            }
+            else
+            {
+                hidden = false;
+            }
         }
     }
 
