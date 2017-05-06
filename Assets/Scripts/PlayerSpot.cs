@@ -72,7 +72,15 @@ public class PlayerSpot : MonoBehaviour {
                 if (!g.GetComponent<PlayerController>().hidden)
                 {
                     //Tell main camera to do animation
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraController>().SpotPlayer(g.gameObject);
+                    GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                    if (mainCamera)
+                    {
+                        MainCameraController mainCameraController = mainCamera.GetComponent<MainCameraController>();
+                        if (mainCameraController)
+                        {
+                            mainCameraController.SpotPlayer(g.gameObject);
+                        }
+                    }
                     break;
                 }
             }
