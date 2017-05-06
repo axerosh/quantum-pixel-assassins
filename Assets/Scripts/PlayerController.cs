@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     public Material Player1Outline;
     public Material Player2Outline;
 
-    public float speed = 6.0F;
+    public float speed = 3.0F;
 
     public bool canMove = true;
     private Rigidbody2D controller;
