@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour {
     public Material Red;
     public Material Green;
 
+    public Material Player1Outline;
+    public Material Player2Outline;
+
     public float speed = 6.0F;
-    private Vector3 moveDirection = Vector3.zero;
 
     void Update()
     {
@@ -38,7 +40,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Check color under player
-        if (Physics.Raycast(transform.position + new Vector3(0, 0, 1), new Vector3(0, 0, 1), out groundHit))
+        Debug.DrawRay(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1));
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1), out groundHit, 100))
         {
             if (groundHit.transform.gameObject.GetComponent<Renderer>().sharedMaterial == gameObject.GetComponent<Renderer>().sharedMaterial)
             {
@@ -56,6 +59,20 @@ public class PlayerController : MonoBehaviour {
     {
         ren = GetComponent<MeshRenderer>();
         ren.enabled = true;
+
+        GameObject outline = gameObject.transform.Find("Outline").gameObject;
+
+        if (outline)
+        {
+            if (playerNumber == 1)
+            {
+                outline.GetComponent<Renderer>().sharedMaterial = Player1Outline;
+            }
+            else if (playerNumber == 2)
+            {
+                outline.GetComponent<Renderer>().sharedMaterial = Player2Outline;
+            }
+        }
     }
 
 }
