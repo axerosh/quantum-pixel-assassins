@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TargetAreaScript : MonoBehaviour {
 
+    public GameObject Eraser;
+
     private int numberOfPlayersInZone;
 
     private bool startedKilling = false;
@@ -26,7 +28,7 @@ public class TargetAreaScript : MonoBehaviour {
             {
                 targetController.OnPlayer1Enter();
             }
-            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
+            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2)
             {
                 targetController.OnPlayer2Enter();
             }
@@ -43,7 +45,7 @@ public class TargetAreaScript : MonoBehaviour {
             {
                 targetController.OnPlayer1Exit();
             }
-            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
+            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2)
             {
                 targetController.OnPlayer2Exit();
             }
@@ -56,6 +58,10 @@ public class TargetAreaScript : MonoBehaviour {
 		if (numberOfPlayersInZone == 2 && Input.GetAxis("Kill") < 0 && !startedKilling)
         {
             Debug.Log("Killing");
+
+            Eraser.SetActive(true);
+            Eraser.GetComponent<EraserController>().eraseAndBegone();
+
             Destroy(gameObject);
             startedKilling = true;
         }

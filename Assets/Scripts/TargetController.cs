@@ -19,14 +19,14 @@ public class TargetController : MonoBehaviour {
     SpriteRenderer baseRen;
     SpriteRenderer blackRen;
     SpriteRenderer whiteRen;
-    SpriteRenderer knifeRen;
+    GameObject eraserIcon;
     
     void Start ()
     {
         baseRen = GameObject.Find("Base").GetComponent<SpriteRenderer>();
         blackRen = GameObject.Find("Black").GetComponent<SpriteRenderer>();
         whiteRen = GameObject.Find("White").GetComponent<SpriteRenderer>();
-        knifeRen = GameObject.Find("Black").GetComponent<SpriteRenderer>();
+        eraserIcon = GameObject.Find("EraserIcon");
 
         if (Large)
         {
@@ -40,42 +40,41 @@ public class TargetController : MonoBehaviour {
             blackRen.sprite = Black;
             whiteRen.sprite = White;
         }
-
-        //knifeRen.sprite = ???
-
+        
         baseRen.enabled = true;
-        blackRen.enabled = false;
-        whiteRen.enabled = false;
-        knifeRen.enabled = false;
+        blackRen.enabled = true;
+        whiteRen.enabled = true;
+        eraserIcon.SetActive(false);
+
     }
 
     public void OnPlayer1Enter()
     {
-        blackRen.enabled = true;
-        if (whiteRen.enabled)
+        blackRen.enabled = false;
+        if (!whiteRen.enabled)
         {
-            knifeRen.enabled = true;
+            eraserIcon.SetActive(true);
         }
     }
 
     public void OnPlayer1Exit()
     {
-        blackRen.enabled = false;
-        knifeRen.enabled = false;
+        blackRen.enabled = true;
+        eraserIcon.SetActive(false);
     }
 
     public void OnPlayer2Enter()
     {
-        whiteRen.enabled = true;
-        if (blackRen.enabled)
+        whiteRen.enabled = false;
+        if (!blackRen.enabled)
         {
-            knifeRen.enabled = true;
+            eraserIcon.SetActive(true);
         }
     }
 
     public void OnPlayer2Exit()
     {
-        whiteRen.enabled = false;
-        knifeRen.enabled = false;
+        whiteRen.enabled = true;
+        eraserIcon.SetActive(false);
     }
 }
