@@ -6,83 +6,76 @@ public class TargetController : MonoBehaviour {
 
     public bool Large = false;
 
-    public Sprite Standard;
-    public Sprite BlackOnly;
-    public Sprite WhiteOnly;
+    public Sprite Base;
+    public Sprite Black;
+    public Sprite White;
 
-    public Sprite LargeStandard;
-    public Sprite LargeBlackOnly;
-    public Sprite LargeWhiteOnly;
+    public Sprite LargeBase;
+    public Sprite LargeBlack;
+    public Sprite LargeWhite;
 
-    SpriteRenderer ren;
+    public Sprite Knife;
 
-    public bool player1InArea = false;
-    public bool player2InArea = false;
+    SpriteRenderer baseRen;
+    SpriteRenderer blackRen;
+    SpriteRenderer whiteRen;
+    SpriteRenderer knifeRen;
     
     void Start ()
     {
-        ren = GetComponent<SpriteRenderer>();
-        ren.enabled = true;
-
+        baseRen = GameObject.Find("Base").GetComponent<SpriteRenderer>();
+        blackRen = GameObject.Find("Black").GetComponent<SpriteRenderer>();
+        whiteRen = GameObject.Find("White").GetComponent<SpriteRenderer>();
+        knifeRen = GameObject.Find("Black").GetComponent<SpriteRenderer>();
 
         if (Large)
         {
-            ren.sprite = LargeStandard;
+            baseRen.sprite = LargeBase;
+            blackRen.sprite = LargeBlack;
+            whiteRen.sprite = LargeWhite;
         }
         else
         {
-            ren.sprite = Standard;
+            baseRen.sprite = Base;
+            blackRen.sprite = Black;
+            whiteRen.sprite = White;
+        }
+
+        //knifeRen.sprite = ???
+
+        baseRen.enabled = true;
+        blackRen.enabled = false;
+        whiteRen.enabled = false;
+        knifeRen.enabled = false;
+    }
+
+    public void OnPlayer1Enter()
+    {
+        blackRen.enabled = true;
+        if (whiteRen.enabled)
+        {
+            knifeRen.enabled = true;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    public void OnPlayer1Exit()
     {
-        if (coll.gameObject.tag == "Player")
+        blackRen.enabled = false;
+        knifeRen.enabled = false;
+    }
+
+    public void OnPlayer2Enter()
+    {
+        whiteRen.enabled = true;
+        if (blackRen.enabled)
         {
-            if (coll.gameObject.GetComponent<PlayerController>().playerNumber == 1) // Black Player
-            {
-                GameObject target = GameObject.Find("Target");
-                if (target)
-                {
-
-                    if (target.Large)
-                    {
-                        ren.sprite = LargeWhiteOnly;
-                    }
-                    else
-                    {
-                        ren.sprite = WhiteOnly;
-                    }
-                }
-
-                GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            }
-            else if (coll.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
-            {
-                if (Large)
-                {
-                    ren.sprite = LargeBlackOnly;
-                }
-                else
-                {
-                    ren.sprite = BlackOnly;
-                }
-            }
+            knifeRen.enabled = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D coll)
+    public void OnPlayer2Exit()
     {
-        if (coll.gameObject.tag == "Player")
-        {
-            if (Large)
-            {
-                ren.sprite = LargeStandard;
-            }
-            else
-            {
-                ren.sprite = Standard;
-            }
-        }
+        whiteRen.enabled = false;
+        knifeRen.enabled = false;
     }
 }
