@@ -6,92 +6,82 @@ public class TargetController : MonoBehaviour {
 
     public bool Large = false;
 
-    public Material Standard;
-    public Material BlackOnly;
-    public Material WhiteOnly;
+    public Sprite Standard;
+    public Sprite BlackOnly;
+    public Sprite WhiteOnly;
 
-    public Material LargeStandard;
-    public Material LargeBlackOnly;
-    public Material LargeWhiteOnly;
+    public Sprite LargeStandard;
+    public Sprite LargeBlackOnly;
+    public Sprite LargeWhiteOnly;
 
-    MeshRenderer ren;
+    SpriteRenderer ren;
+
+    public bool player1InArea = false;
+    public bool player2InArea = false;
     
     void Start ()
     {
-        ren = GetComponent<MeshRenderer>();
+        ren = GetComponent<SpriteRenderer>();
         ren.enabled = true;
+
 
         if (Large)
         {
-            ren.sharedMaterial = LargeStandard;
+            ren.sprite = LargeStandard;
         }
         else
         {
-            ren.sharedMaterial = Standard;
+            ren.sprite = Standard;
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Debug.Log("Collision Enter");
-    
-        GameObject other = coll.gameObject;
-        if (other.tag == "Player")
+        if (coll.gameObject.tag == "Player")
         {
-            if (other.GetComponent<PlayerController>().playerNumber == '0') // Black Player
+            if (coll.gameObject.GetComponent<PlayerController>().playerNumber == 1) // Black Player
             {
-                Debug.Log("Player 1 Touched");
+                GameObject target = GameObject.Find("Target");
+                if (target)
+                {
 
-                if (Large)
-                {
-                    ren.sharedMaterial = LargeWhiteOnly;
+                    if (target.Large)
+                    {
+                        ren.sprite = LargeWhiteOnly;
+                    }
+                    else
+                    {
+                        ren.sprite = WhiteOnly;
+                    }
                 }
-                else
-                {
-                    ren.sharedMaterial = WhiteOnly;
-                }
+
+                GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
-            else if (other.GetComponent<PlayerController>().playerNumber == '1') // White Player
+            else if (coll.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
             {
-                Debug.Log("Player 2 Touched");
                 if (Large)
                 {
-                    ren.sharedMaterial = LargeBlackOnly;
+                    ren.sprite = LargeBlackOnly;
                 }
                 else
                 {
-                    ren.sharedMaterial = BlackOnly;
+                    ren.sprite = BlackOnly;
                 }
             }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D coll)
-    {
-        Debug.Log("Trigger Enter");
-    }
-
-
-    void OnTriggerExit2D(Collider2D coll)
-    {
-        Debug.Log("Trigger Exit");
-    }
-
     void OnCollisionExit2D(Collision2D coll)
     {
-        Debug.Log("Collision Exit");
-
         if (coll.gameObject.tag == "Player")
         {
-            Debug.Log("Player Left");
-
             if (Large)
             {
-                ren.sharedMaterial = LargeStandard;
+                ren.sprite = LargeStandard;
             }
             else
             {
-                ren.sharedMaterial = Standard;
+                ren.sprite = Standard;
             }
         }
     }

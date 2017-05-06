@@ -5,18 +5,32 @@ using UnityEngine;
 public class TargetAreaScript : MonoBehaviour {
 
     private int numberOfPlayersInZone;
+
     private bool startedKilling = false;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject Target;
+    TargetController targetController;
+
+    // Use this for initialization
+    void Start () {
         numberOfPlayersInZone = 0;
-	}
+        targetController = Target.GetComponent<TargetController>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             numberOfPlayersInZone++;
+
+            if (other.gameObject.GetComponent<PlayerController>().playerNumber == 1)
+            {
+                targetController.player1InArea = true;
+            }
+            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
+            {
+                targetController.player2InArea = true;
+            }
         }
     }
 
@@ -25,7 +39,15 @@ public class TargetAreaScript : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             numberOfPlayersInZone--;
-        }
+
+            if (other.gameObject.GetComponent<PlayerController>().playerNumber == 1)
+            {
+                targetController.player1InArea = false;
+            }
+            else if (other.gameObject.GetComponent<PlayerController>().playerNumber == 2) // White Player
+            {
+                targetController.player1InArea = false;
+            }
     }
 
     // Update is called once per frame
