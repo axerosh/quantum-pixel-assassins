@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Check color under player
-        if (Physics.Raycast(transform.position + new Vector3(0, 0, 1), new Vector3(0, 0, 1), out groundHit))
+        Debug.DrawRay(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1));
+        if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1), out groundHit, 100))
         {
             if (groundHit.transform.gameObject.GetComponent<Renderer>().sharedMaterial == gameObject.GetComponent<Renderer>().sharedMaterial)
             {
