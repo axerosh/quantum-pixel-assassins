@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SlidingDoorController : MonoBehaviour {
 
-    public ToggleInteractible btn;
+    public ToggleInteractible[] btns;
 
     public GameObject Door1, Door2;
     public GameObject Target1, Target2;
 
     public Vector3 initPos1, initPos2;
+
+    public bool startOpen;
 
     public float doorSpeed = 10;
 
@@ -21,13 +23,23 @@ public class SlidingDoorController : MonoBehaviour {
     void Start() {
         initPos1 = Door1.transform.position;
         initPos2 = Door2.transform.position;
+
+        if (startOpen)
+        {
+            Door1.transform.position = Target1.transform.position;
+            Door2.transform.position = Target2.transform.position;
+            open = true;
+        }
     }
 
     // Update is called once per frame
     void Update() {
-        if (btn.GetToggled())
+        foreach (ToggleInteractible btn in btns)
         {
-            toggleOpen();
+            if (btn.GetToggled())
+            {
+                toggleOpen();
+            }
         }
 
         if (opening)

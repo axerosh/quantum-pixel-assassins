@@ -8,7 +8,7 @@ public class guardPatrolController : MonoBehaviour {
 
     public ArrayList goals;
     private int curTarget = 0;
-    private float standTime = 1; //Time to stay at each place
+    public float standTime = 1; //Time to stay at each place
 
     public float walkSpeed = 1;
     public float rotationSpeed = 4;
@@ -46,14 +46,14 @@ public class guardPatrolController : MonoBehaviour {
             else
             {
                 Vector3 newDir = Vector3.RotateTowards(transform.up, -delta.normalized, Time.deltaTime*rotationSpeed, 0.0F);
-                float rotAngle = Vector3.Angle(transform.up, newDir);
-                if (Vector3.Cross(transform.up, newDir).z < 0) rotAngle = -rotAngle;
-                //transform.SetPositionAndRotation(transform.position + delta.normalized * walkSpeed * Time.deltaTime, Quaternion.LookRotation(-transform.forward, newDir));
-                transform.SetPositionAndRotation(transform.position + delta.normalized * walkSpeed * Time.deltaTime, transform.rotation);
-
+                //float rotAngle = Vector3.Angle(transform.up, newDir);
+                //if (Vector3.Cross(transform.up, newDir).z < 0) rotAngle = -rotAngle;
+                transform.SetPositionAndRotation(transform.position + delta.normalized * walkSpeed * Time.deltaTime, Quaternion.LookRotation(-transform.forward, newDir));
+                //transform.SetPositionAndRotation(transform.position + delta.normalized * walkSpeed * Time.deltaTime, transform.rotation);
+                /*
                 if (rotAngle > 0.000000001f) {
                     transform.Rotate(0, 0, rotAngle);
-                }
+                }*/
             }
         }
 	}
