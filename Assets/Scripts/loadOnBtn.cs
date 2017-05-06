@@ -7,14 +7,17 @@ public class loadOnBtn : MonoBehaviour {
 
     public Object scene;
 
-	// Use this for initialization
-	void Start () {
+    public bool useB = true;
+    public bool useA = false;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("B"))
+        if ((useB && Input.GetButtonDown("B")) || (useA && Input.GetButtonDown("A")))
         {
             SceneManager.LoadScene(scene.name);
         }
