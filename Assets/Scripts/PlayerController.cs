@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     public Material Green;
 
     public float speed = 6.0F;
-    private Vector3 moveDirection = Vector3.zero;
 
     MeshRenderer ren;
 
@@ -31,10 +30,11 @@ public class PlayerController : MonoBehaviour {
         controller.velocity = movment * speed;
 
 
-        if (Input.GetButtonDown("A"))
+        if (Input.GetButtonDown("A1"))
         {
             ren.sharedMaterial = Green;
-        }else if (Input.GetButtonDown("B"))
+        }
+        else if (Input.GetButtonDown("B1"))
         {
             ren.sharedMaterial = Red;
         }
