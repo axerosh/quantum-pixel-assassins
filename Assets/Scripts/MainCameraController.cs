@@ -41,6 +41,12 @@ public class MainCameraController : MonoBehaviour {
 
     public IEnumerator spotAnimation(GameObject player)
     {
+        //Stop all players from moving
+        foreach (GameObject playerInstance in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            playerInstance.GetComponent<PlayerController>().preventMove();
+        }
+
         for (int i = 0; i < zoomSteps; i++)
         {
             soundPlayer.PlayOneShot(sounds[i]);
