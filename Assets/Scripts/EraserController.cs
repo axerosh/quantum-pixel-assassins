@@ -12,16 +12,18 @@ public class EraserController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public void eraseAndBegone()
+    public void EraseAndBegone()
     {
         Animator animator = GetComponent<Animator>();
         if (animator)
         {
+            Debug.Log("Erasing: Playing animation");
             animator.SetTrigger("erase");
             Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + begoneDelay);
         }
         else
         {
+            Debug.Log("Erasing: No animation found");
             Destroy(gameObject);
         }
     }

@@ -17,26 +17,31 @@ public class PlayerController : MonoBehaviour {
     public Material Player1Outline;
     public Material Player2Outline;
 
-    public float speed = 6.0F;
+    public float speed = 3.0F;
+    
+    public bool canMove = true;
+    private Rigidbody2D controller;
 
     void Update()
     {
-        Rigidbody2D controller = GetComponent<Rigidbody2D>();
-
-        float moveHorizontal = Input.GetAxis("Horizontal" + playerNumber.ToString());
-        float moveVertical = Input.GetAxis("Vertical" + playerNumber.ToString());
-        
-
-        Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
-        controller.velocity = movment * speed;
-
-        if (Input.GetButtonDown("A"))
+        if (canMove)
         {
-            ren.sharedMaterial = Green;
-        }
-        else if (Input.GetButtonDown("B"))
-        {
-            ren.sharedMaterial = Red;
+
+            float moveHorizontal = Input.GetAxis("Horizontal" + playerNumber.ToString());
+            float moveVertical = Input.GetAxis("Vertical" + playerNumber.ToString());
+
+
+            Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
+            controller.velocity = movment * speed;
+
+            if (Input.GetButtonDown("A"))
+            {
+                ren.sharedMaterial = Green;
+            }
+            else if (Input.GetButtonDown("B"))
+            {
+                ren.sharedMaterial = Red;
+            }
         }
 
         //Check color under player
@@ -57,6 +62,8 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+        controller = GetComponent<Rigidbody2D>();
+
         ren = GetComponent<MeshRenderer>();
         ren.enabled = true;
 
@@ -75,5 +82,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+
+    public void preventMove()
+    {
+        controller.velocity = new Vector3(0,0,0);
+        canMove = false;
+    }
 }
 

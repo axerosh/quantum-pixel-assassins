@@ -55,12 +55,12 @@ public class TargetAreaScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-		if (numberOfPlayersInZone == 2 && Input.GetAxis("Kill") < 0 && !startedKilling)
+		if (numberOfPlayersInZone == 2 && Input.GetAxis("Kill1") < 0 && Input.GetAxis("Kill2") < 0 && !startedKilling)
         {
             Debug.Log("Killing");
 
             Eraser.SetActive(true);
-            Eraser.GetComponent<EraserController>().eraseAndBegone();
+            Eraser.GetComponent<EraserController>().EraseAndBegone();
 
             Destroy(gameObject);
             startedKilling = true;
