@@ -12,6 +12,11 @@ public class PlayerSpot : MonoBehaviour {
     private bool hasDetected = false;
     private double spottedTime;
 
+    void Start()
+    {
+        playersInVision = new ArrayList();
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Enter");
@@ -27,23 +32,24 @@ public class PlayerSpot : MonoBehaviour {
             {
                 if (g == other.gameObject)
                 {
+                    Debug.Log("Leave");
                     playersInVision.Remove(g);
+                    break;
                 }
             }
         }
     }
-
-    // Use this for initialization
-    void Start () {
-        playersInVision = new ArrayList();
-	}
 	
 	// Update is called once per frame
 	void Update () {
+        bool oneVisible = false; //At least one player is visible
+
         foreach (GameObject g in playersInVision)
         {
             if (!g.GetComponent<PlayerController>().hidden)
             {
+                oneVisible = true;
+
                 //Player not hidden
                 if (!hasDetected)
                 {
@@ -51,6 +57,12 @@ public class PlayerSpot : MonoBehaviour {
                     spottedTime = Time.time + findTime;
                 }
             }
+        }
+
+        if (!oneVisible)
+        {
+            //If none is visible anymore, don't spot
+            hasDetected = false;
         }
 
         if (hasDetected && Time.time > spottedTime)
