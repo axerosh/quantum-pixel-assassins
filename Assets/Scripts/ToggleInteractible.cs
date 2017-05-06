@@ -49,7 +49,7 @@ public class ToggleInteractible : MonoBehaviour {
 
         foreach (GameObject g in players)
         {
-            if (string.Equals(g.name, "Player 1"))
+            if (g.GetComponent<PlayerController>().playerNumber == 1)
             {
                 if (Input.GetAxis("Kill1") < 0 && !pressing)
                 {
@@ -69,7 +69,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
             }
 
-            if (string.Equals(g.name, "Player 2"))
+            if (g.GetComponent<PlayerController>().playerNumber == 2)
             {
                 if (Input.GetAxis("Kill2") < 0 && !pressing)
                 {
