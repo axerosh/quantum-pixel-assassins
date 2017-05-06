@@ -13,7 +13,7 @@ public class MenuController : MonoBehaviour {
     public Object levelSelect;
     public Object firstLevel;
 
-    private bool joyReset = true;
+    private bool joyReset1, joyReset2 = true;
 
 	// Use this for initialization
 	void Start () {
@@ -25,19 +25,36 @@ public class MenuController : MonoBehaviour {
 	void Update () {
         if (Input.GetAxis("Vertical1") == 0)
         {
-            joyReset = true;
+            joyReset1 = true;
+        }
+        if (Input.GetAxis("Vertical2") == 0)
+        {
+            joyReset2 = true;
         }
 
-        if (joyReset)
+        if (joyReset1)
         {
-            if (Input.GetAxis("Vertical1") < -0.5 || Input.GetAxis("Vertical2") < -0.5)
+            if (Input.GetAxis("Vertical1") < -0.5)
             {
-                joyReset = false;
+                joyReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Vertical1") > 0.5 || Input.GetAxis("Vertical2") > 0.5)
+            else if (Input.GetAxis("Vertical1") > 0.5)
             {
-                joyReset = false;
+                joyReset1 = false;
+                moveSelection(-1);
+            }
+        }
+        if (joyReset2)
+        {
+            if (Input.GetAxis("Vertical2") < -0.5)
+            {
+                joyReset2 = false;
+                moveSelection(1);
+            }
+            else if (Input.GetAxis("Vertical2") > 0.5)
+            {
+                joyReset2 = false;
                 moveSelection(-1);
             }
         }

@@ -13,7 +13,9 @@ public class guardPatrolController : MonoBehaviour {
     public float walkSpeed = 1;
     public float rotationSpeed = 4;
 
-    private bool walk = true;
+    private bool walk = false;
+
+    public float startTime = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +25,9 @@ public class guardPatrolController : MonoBehaviour {
         {
             goals.Add(child.position);
         }
-	}
+
+        Invoke("startMove", standTime);
+    }
 	
     private void startMove()
     {
