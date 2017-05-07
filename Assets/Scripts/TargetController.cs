@@ -5,43 +5,51 @@ using UnityEngine;
 public class TargetController : MonoBehaviour {
 
     public bool Large = false;
-
-    public Sprite Base;
+    
     public Sprite Black;
     public Sprite White;
-
-    public Sprite LargeBase;
+    
     public Sprite LargeBlack;
     public Sprite LargeWhite;
-
-    public Sprite Knife;
-
-    SpriteRenderer baseRen;
+    
     SpriteRenderer blackRen;
     SpriteRenderer whiteRen;
     GameObject eraserIcon;
-    
+
+    enum Visibility { Clear, Transparent, Opaque}
+    private bool blackOpaque;
+    private bool whiteOpaque;
+
+    private void setAlpha(SpriteRenderer ren, float alpha)
+    {
+        Color tmp = ren.color;
+        tmp.a = alpha;
+        ren.color = tmp;
+    }
+
     void Start ()
     {
-        baseRen = GameObject.Find("Base").GetComponent<SpriteRenderer>();
         blackRen = GameObject.Find("Black").GetComponent<SpriteRenderer>();
         whiteRen = GameObject.Find("White").GetComponent<SpriteRenderer>();
         eraserIcon = GameObject.Find("EraserIcon");
 
         if (Large)
         {
-            baseRen.sprite = LargeBase;
             blackRen.sprite = LargeBlack;
             whiteRen.sprite = LargeWhite;
         }
         else
         {
-            baseRen.sprite = Base;
             blackRen.sprite = Black;
             whiteRen.sprite = White;
         }
+
+        blackOpaque = true;
+        whiteOpaque = true;
+
+        setAlpha(blackRen, 1.0f);
+        setAlpha(whiteRen, 1.0f);
         
-        baseRen.enabled = true;
         blackRen.enabled = true;
         whiteRen.enabled = true;
         eraserIcon.SetActive(false);
@@ -50,8 +58,10 @@ public class TargetController : MonoBehaviour {
 
     public void OnPlayer1Enter()
     {
-        blackRen.enabled = false;
-        if (!whiteRen.enabled)
+        setAlpha(blackRen, 0.5f);
+        blackOpaque = false;
+
+        if (!whiteOpaque)
         {
             eraserIcon.SetActive(true);
         }
@@ -59,14 +69,17 @@ public class TargetController : MonoBehaviour {
 
     public void OnPlayer1Exit()
     {
-        blackRen.enabled = true;
+        setAlpha(blackRen, 1.0f);
+        blackOpaque = true;
         eraserIcon.SetActive(false);
     }
 
     public void OnPlayer2Enter()
     {
-        whiteRen.enabled = false;
-        if (!blackRen.enabled)
+        setAlpha(whiteRen, 0.5f);
+        whiteOpaque = false;
+
+        if (!blackOpaque)
         {
             eraserIcon.SetActive(true);
         }
@@ -74,7 +87,42 @@ public class TargetController : MonoBehaviour {
 
     public void OnPlayer2Exit()
     {
-        whiteRen.enabled = true;
+        setAlpha(whiteRen, 1.0f);
+        whiteOpaque = true;
         eraserIcon.SetActive(false);
+    }
+
+    public void onPlayer1KillHold()
+    {
+        setAlpha(blackRen, 0.0f);
+    }
+
+    public void onPlayer1KillRelease()
+    {
+        if (blackOpaque)
+        {
+            setAlpha(blackRen, 1.0f);
+        }
+        else
+        {
+            setAlpha(blackRen, 0.5f);
+        }
+    }
+
+    public void onPlayer2KillHold()
+    {
+        setAlpha(whiteRen, 0.0f);
+    }
+
+    public void onPlayer2KillRelease()
+    {
+        if (whiteOpaque)
+        {
+            setAlpha(whiteRen, 1.0f);
+        }
+        else
+        {
+            setAlpha(whiteRen, 0.5f);
+        }
     }
 }

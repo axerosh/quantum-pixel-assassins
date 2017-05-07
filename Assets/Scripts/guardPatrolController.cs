@@ -28,7 +28,16 @@ public class guardPatrolController : MonoBehaviour {
 
         Invoke("startMove", standTime);
     }
-	
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            walk = false;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainCameraController>().SpotPlayer(collision.gameObject);
+        }
+    }
+
     private void startMove()
     {
         walk = true;
