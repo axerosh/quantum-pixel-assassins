@@ -10,14 +10,15 @@ public class LevelSelectorController : MonoBehaviour
     int curSelection = 0;
     string oldText; //standard text of selected menu item
 
-    public Object Level1;
-    public Object Level2;
-    public Object Level3;
-    public Object Level4;
-    public Object Level5;
-    public Object Level6;
-    public Object Level7;
-    public Object Level8;
+    public string Level1;
+    public string Level2;
+    public string Level3;
+    public string Level4;
+    public string Level5;
+    public string Level6;
+    public string Level7;
+    public string Level8;
+
 
     private bool joyReset1, joyReset2 = true;
 
@@ -93,28 +94,28 @@ public class LevelSelectorController : MonoBehaviour
             switch (curSelection)
             {
                 case 0:
-                    SceneManager.LoadScene(Level1.name);
+                    SceneManager.LoadScene(Level1);
                     break;
                 case 1:
-                    SceneManager.LoadScene(Level2.name);
+                    SceneManager.LoadScene(Level2);
                     break;
                 case 2:
-                    SceneManager.LoadScene(Level3.name);
+                    SceneManager.LoadScene(Level3);
                     break;
                 case 3:
-                    SceneManager.LoadScene(Level4.name);
+                    SceneManager.LoadScene(Level4);
                     break;
                 case 4:
-                    SceneManager.LoadScene(Level5.name);
+                    SceneManager.LoadScene(Level5);
                     break;
                 case 5:
-                    SceneManager.LoadScene(Level6.name);
+                    SceneManager.LoadScene(Level6);
                     break;
                 case 6:
-                    SceneManager.LoadScene(Level7.name);
+                    SceneManager.LoadScene(Level7);
                     break;
                 case 7:
-                    SceneManager.LoadScene(Level8.name);
+                    SceneManager.LoadScene(Level8);
                     break;
             }
         }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeLevelScript : MonoBehaviour {
 
-    public Object nextLevel;
+    public string nextLevel;
 
     
 
@@ -25,7 +25,7 @@ public class ChangeLevelScript : MonoBehaviour {
         {
             if (nextLevel != null)
             {
-                SceneManager.LoadScene(nextLevel.name);
+                SceneManager.LoadScene(nextLevel);
             }
             else
             {

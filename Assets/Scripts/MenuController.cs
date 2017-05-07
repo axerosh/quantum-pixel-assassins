@@ -64,13 +64,16 @@ public class MenuController : MonoBehaviour {
             switch (curSelection)
             {
                 case 0:
-                    SceneManager.LoadScene(firstLevel.name);
+                    //SceneManager.LoadScene(firstLevel.name);
+                    SceneManager.LoadScene("Intro1");
                 break;
                 case 1:
-                    SceneManager.LoadScene(levelSelect.name);
-                break;
+                    //SceneManager.LoadScene(levelSelect.name);
+                    SceneManager.LoadScene("Level Select");
+                    break;
                 case 2:
-                    SceneManager.LoadScene(instructions.name);
+                    //SceneManager.LoadScene(instructions.name);
+                    SceneManager.LoadScene("Instructions");
                     break;
                 case 3:
                     Application.Quit();

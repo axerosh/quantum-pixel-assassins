@@ -35,7 +35,8 @@ public class ChangeTextScript : MonoBehaviour {
                     guitext.text = "DESPITE THE MISHAP THE UNITED PIXELS DECIDED TO SEND OUT THESE\nSOLDIERS TO ELIMINATE THE ENEMIES OF PEACE\nAND ERASE ALL EVIL FROM THE WORLD.";
                     break;
                 case 5:
-                    SceneManager.LoadScene(nextLevel.name);
+                    SceneManager.LoadScene("Briefing1");
+                    //SceneManager.LoadScene(nextLevel.name);
                     break;
             }
 

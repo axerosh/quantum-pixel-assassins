@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class loadOnBtn : MonoBehaviour {
 
-    public Object scene;
+    public string scene;
 
     public bool useB = true;
     public bool useA = false;
@@ -19,7 +19,7 @@ public class loadOnBtn : MonoBehaviour {
 	void Update () {
         if ((useB && Input.GetButtonDown("B")) || (useA && Input.GetButtonDown("A")))
         {
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(scene);
         }
 	}
 }
