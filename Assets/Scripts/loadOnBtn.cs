@@ -17,7 +17,7 @@ public class loadOnBtn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if ((useB && Input.GetButtonDown("BJoystick")) || (useA && Input.GetButtonDown("AJoystick")) || (useB && Input.GetButtonDown("BKeyboard")) || (useA && Input.GetButtonDown("AKeyboard")))
+        if ((useB && Input.GetButtonDown("Menu: Cancel")) || (useA && Input.GetButtonDown("Menu: Accept")))
         {
             SceneManager.LoadScene(scene);
         }

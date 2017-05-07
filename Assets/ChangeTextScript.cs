@@ -18,7 +18,7 @@ public class ChangeTextScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("AJoystick") || Input.GetButtonDown("AKeyboard"))
+        if (Input.GetButtonDown("Menu: Accept"))
         {
             switch (textnumber)
             {

@@ -31,39 +31,39 @@ public class PlayerController : MonoBehaviour {
 
             // Horizontal input
             float moveHorizontal;
-            float moveHorizontalJoystick = Input.GetAxis("HorizontalJoystick" + playerNumber.ToString());
-            float moveHorizontalKeyboard = Input.GetAxis("HorizontalKeyboard" + playerNumber.ToString());
-            if (Mathf.Abs(moveHorizontalJoystick) > Mathf.Abs(moveHorizontalKeyboard))
+            float moveHorizontalAnalog = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Horizontal (Analog)");
+            float moveHorizontalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Horizontal (Buttons/Keys)");
+            if (Mathf.Abs(moveHorizontalAnalog) >= Mathf.Abs(moveHorizontalButton))
             {
-                moveHorizontal = moveHorizontalJoystick;
+                moveHorizontal = moveHorizontalAnalog;
             }
             else
             {
-                moveHorizontal = moveHorizontalKeyboard;
+                moveHorizontal = moveHorizontalButton;
             }
 
             // Vertical input
             float moveVertical;
-            float moveVerticalJoystick = Input.GetAxis("VerticalJoystick" + playerNumber.ToString());
-            float moveVerticalKeyboard = Input.GetAxis("VerticalKeyboard" + playerNumber.ToString());
-            if (Mathf.Abs(moveVerticalJoystick) > Mathf.Abs(moveVerticalKeyboard))
+            float moveVerticalAnalog = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Vertical (Analog)");
+            float moveVerticalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Vertical (Buttons/Keys)");
+            if (Mathf.Abs(moveVerticalAnalog) >= Mathf.Abs(moveVerticalButton))
             {
-                moveVertical = moveVerticalJoystick;
+                moveVertical = moveVerticalAnalog;
             }
             else
             {
-                moveVertical = moveVerticalKeyboard;
+                moveVertical = moveVerticalButton;
             }
 
 
             Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
             controller.velocity = movment * speed;
 
-            if (Input.GetButtonDown("AJoystick") || Input.GetButtonDown("AKeyboard"))
+            if (Input.GetButtonDown("Player: Turn Green"))
             {
                 insideRen.sharedMaterial = Green;
             }
-            else if (Input.GetButtonDown("BJoystick") || Input.GetButtonDown("BKeyboard"))
+            else if (Input.GetButtonDown("Player: Turn Red"))
             {
                 insideRen.sharedMaterial = Red;
             }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonDown("Start"))
+        if (Input.GetButtonDown("Player: To Menu"))
         {
             SceneManager.LoadScene("MainMenu");
         }
