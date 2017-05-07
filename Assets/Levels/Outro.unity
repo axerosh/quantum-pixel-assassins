@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cba1d328f46f7b4c8e9314795bb0229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 
+  scene: MainMenu
   useB: 1
   useA: 1
 --- !u!1 &1219246859
