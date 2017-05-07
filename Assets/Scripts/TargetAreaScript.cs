@@ -56,7 +56,8 @@ public class TargetAreaScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         if (!startedKilling && numberOfPlayersInZone == 2)
         {
@@ -75,15 +76,7 @@ public class TargetAreaScript : MonoBehaviour {
             {
                 targetController.onPlayer1KillRelease();
 
-            Destroy(gameObject);
-            startedKilling = true;
 
-            foreach (GameObject g in players)
-            {
-                g.GetComponent<PlayerController>().preventMove();
-            }
-
-        }
 
                 if (Input.GetAxis("Kill2") < 0)
                 {
@@ -103,6 +96,8 @@ public class TargetAreaScript : MonoBehaviour {
             }
         }
 
+    }
+
     private void Kill()
     {
         Debug.Log("Killing");
@@ -112,5 +107,10 @@ public class TargetAreaScript : MonoBehaviour {
 
         Destroy(gameObject);
         startedKilling = true;
+
+        foreach (GameObject g in players)
+        {
+            g.GetComponent<PlayerController>().preventMove();
+        }
     }
 }
