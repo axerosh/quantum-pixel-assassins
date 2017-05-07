@@ -53,17 +53,52 @@ public class TargetAreaScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
 
-		if (numberOfPlayersInZone == 2 && Input.GetAxis("Kill1") < 0 && Input.GetAxis("Kill2") < 0 && !startedKilling)
+        if (!startedKilling && numberOfPlayersInZone == 2)
         {
-            Debug.Log("Killing");
+            if (Input.GetAxis("Kill1") < 0)
+            {
+                if (Input.GetAxis("Kill2") < 0)
+                {
+                    Kill();
+                }
+                else
+                {
+                    targetController.onPlayer1KillHold();
+                }
+            }
+            else
+            {
+                targetController.onPlayer1KillRelease();
 
-            Eraser.SetActive(true);
-            Eraser.GetComponent<EraserController>().EraseAndBegone();
-
-            Destroy(gameObject);
-            startedKilling = true;
+                if (Input.GetAxis("Kill2") < 0)
+                {
+                    if (Input.GetAxis("Kill1") < 0)
+                    {
+                        Kill();
+                    }
+                    else
+                    {
+                        targetController.onPlayer2KillHold();
+                    }
+                }
+                else
+                {
+                    targetController.onPlayer2KillRelease();
+                }
+            }
         }
 	}
+
+    private void Kill()
+    {
+        Debug.Log("Killing");
+
+        Eraser.SetActive(true);
+        Eraser.GetComponent<EraserController>().EraseAndBegone();
+
+        Destroy(gameObject);
+        startedKilling = true;
+    }
 }
