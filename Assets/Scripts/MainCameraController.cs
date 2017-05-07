@@ -8,12 +8,17 @@ public class MainCameraController : MonoBehaviour {
     public AudioClip[] sounds;
     private AudioSource soundPlayer;
 
+    public AudioClip music;
+
     public float zoom = 0.8f;
     public float zoomRotation = 14;
 
     public float waitTime = 0.8f;
 
     public int zoomSteps = 3;
+
+    public float musicVol = 1;
+    public float effectVol = 1;
 
     Camera cameraComp;
 
@@ -23,6 +28,11 @@ public class MainCameraController : MonoBehaviour {
 	void Start () {
         cameraComp = GetComponent<Camera>();
         soundPlayer = GetComponent<AudioSource>();
+
+        soundPlayer.clip = music;
+        soundPlayer.loop = true;
+        soundPlayer.volume = musicVol;
+        soundPlayer.Play();
 	}
 	
 	// Update is called once per frame
@@ -39,8 +49,17 @@ public class MainCameraController : MonoBehaviour {
         }
     }
 
+    public void stopMusic()
+    {
+        soundPlayer.Stop();
+    }
+
     public IEnumerator spotAnimation(GameObject player)
     {
+        //Stop music
+        soundPlayer.Stop();
+        soundPlayer.volume = effectVol;
+
         //Stop all players from moving
         foreach (GameObject playerInstance in GameObject.FindGameObjectsWithTag("Player"))
         {

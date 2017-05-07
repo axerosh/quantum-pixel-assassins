@@ -65,7 +65,7 @@ public class PlayerSpot : MonoBehaviour {
         if (hasDetected && Time.time > spottedTime)
         {
             hasDetected = false;
-            Debug.Log("Spotted");
+            //Debug.Log("Spotted");
 
             foreach (GameObject g in playersInVision)
             {
