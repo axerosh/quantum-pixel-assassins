@@ -18,8 +18,6 @@ public class LevelSelectorController : MonoBehaviour
     public Object Level6;
     public Object Level7;
     public Object Level8;
-    public Object Level9;
-    public Object Level10;
 
     private bool joyReset1, joyReset2 = true;
 
@@ -57,12 +55,12 @@ public class LevelSelectorController : MonoBehaviour
             else if (Input.GetAxis("Horizontal1") < -0.5)
             {
                 joyReset1 = false;
-                moveSelection(5);
+                moveSelection(4);
             }
             else if (Input.GetAxis("Horizontal1") > 0.5)
             {
                 joyReset1 = false;
-                moveSelection(-5);
+                moveSelection(-4);
             }
         }
         if (joyReset2)
@@ -80,12 +78,12 @@ public class LevelSelectorController : MonoBehaviour
             else if (Input.GetAxis("Horizontal2") < -0.5)
             {
                 joyReset2 = false;
-                moveSelection(5);
+                moveSelection(4);
             }
             else if (Input.GetAxis("Horizontal2") > 0.5)
             {
                 joyReset2 = false;
-                moveSelection(-5);
+                moveSelection(-4);
             }
         }
 
@@ -117,12 +115,6 @@ public class LevelSelectorController : MonoBehaviour
                     break;
                 case 7:
                     SceneManager.LoadScene(Level8.name);
-                    break;
-                case 8:
-                    SceneManager.LoadScene(Level9.name);
-                    break;
-                case 9:
-                    SceneManager.LoadScene(Level10.name);
                     break;
             }
         }
