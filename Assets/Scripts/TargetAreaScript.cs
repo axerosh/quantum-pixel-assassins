@@ -61,9 +61,9 @@ public class TargetAreaScript : MonoBehaviour {
 
         if (!startedKilling && numberOfPlayersInZone == 2)
         {
-            if (Input.GetAxis("Kill1") < 0)
+            if (Input.GetAxis("KillJoystick1") < 0 || Input.GetButton("KillKeyboard1"))
             {
-                if (Input.GetAxis("Kill2") < 0)
+                if (Input.GetAxis("KillJoystick2") < 0 || Input.GetButton("KillKeyboard2"))
                 {
                     Kill();
                 }
@@ -78,9 +78,9 @@ public class TargetAreaScript : MonoBehaviour {
 
 
 
-                if (Input.GetAxis("Kill2") < 0)
+                if (Input.GetAxis("KillJoystick2") < 0 || Input.GetButton("KillKeyboard2"))
                 {
-                    if (Input.GetAxis("Kill1") < 0)
+                    if (Input.GetAxis("KillJoystick1") < 0 || Input.GetButton("KillKeyboard1"))
                     {
                         Kill();
                     }

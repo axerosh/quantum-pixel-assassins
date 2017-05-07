@@ -32,33 +32,50 @@ public class LevelSelectorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Vertical1") == 0 && Input.GetAxis("Horizontal1") == 0)
+        if (Input.GetAxis("VerticalKeyboard1") < 0 || Input.GetAxis("VerticalKeyboard2") < 0)
+        {
+            moveSelection(1);
+        }
+        else if (Input.GetAxis("VerticalKeyboard1") > 0 || Input.GetAxis("VerticalKeyboard2") > 0)
+        {
+            moveSelection(-1);
+        }
+        else if (Input.GetAxis("VerticalKeyboard1") < 0 || Input.GetAxis("VerticalKeyboard2") < 0)
+        {
+            moveSelection(4);
+        }
+        else if (Input.GetAxis("VerticalKeyboard1") > 0 || Input.GetAxis("VerticalKeyboard2") > 0)
+        {
+            moveSelection(-4);
+        }
+
+        if (Input.GetAxis("VerticalController1") == 0 && Input.GetAxis("HorizontalController1") == 0)
         {
             joyReset1 = true;
         }
-        if (Input.GetAxis("Vertical2") == 0 && Input.GetAxis("Horizontal2") == 0)
+        if (Input.GetAxis("VerticalController2") == 0 && Input.GetAxis("HorizontalController2") == 0)
         {
             joyReset2 = true;
         }
 
         if (joyReset1)
         {
-            if (Input.GetAxis("Vertical1") < -0.5)
+            if (Input.GetAxis("VerticalController1") < -0.5 || Input.GetAxis("VerticalController1") < -0.5)
             {
                 joyReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Vertical1") > 0.5)
+            else if (Input.GetAxis("VerticalController1") > 0.5)
             {
                 joyReset1 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("Horizontal1") < -0.5)
+            else if (Input.GetAxis("HorizontalController1") < -0.5)
             {
                 joyReset1 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("Horizontal1") > 0.5)
+            else if (Input.GetAxis("HorizontalController1") > 0.5)
             {
                 joyReset1 = false;
                 moveSelection(-4);
@@ -66,22 +83,22 @@ public class LevelSelectorController : MonoBehaviour
         }
         if (joyReset2)
         {
-            if (Input.GetAxis("Vertical2") < -0.5)
+            if (Input.GetAxis("VerticalController2") < -0.5)
             {
                 joyReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Vertical2") > 0.5)
+            else if (Input.GetAxis("VerticalController2") > 0.5)
             {
                 joyReset2 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("Horizontal2") < -0.5)
+            else if (Input.GetAxis("HorizontalController2") < -0.5)
             {
                 joyReset2 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("Horizontal2") > 0.5)
+            else if (Input.GetAxis("HorizontalController2") > 0.5)
             {
                 joyReset2 = false;
                 moveSelection(-4);
@@ -89,7 +106,7 @@ public class LevelSelectorController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("A"))
+        if (Input.GetButtonDown("AController") || Input.GetButtonDown("AKeyboard"))
         {
             switch (curSelection)
             {

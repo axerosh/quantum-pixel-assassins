@@ -51,7 +51,12 @@ public class ToggleInteractible : MonoBehaviour {
         {
             if (g.GetComponent<PlayerController>().playerNumber == 1)
             {
-                if (Input.GetAxis("Kill1") < 0 && !pressing)
+                if (Input.GetButtonDown("KillKeyboard1"))
+                {
+                    Debug.Log("Interacting");
+                    Interact();
+                }
+                else if (Input.GetAxis("KillJoystick1") < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -63,7 +68,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("Kill1") == 0)
+                if (Input.GetAxis("KillJoystick1") == 0)
                 {
                     pressing = false;
                 }
@@ -71,7 +76,12 @@ public class ToggleInteractible : MonoBehaviour {
 
             if (g.GetComponent<PlayerController>().playerNumber == 2)
             {
-                if (Input.GetAxis("Kill2") < 0 && !pressing)
+                if (Input.GetButtonDown("KillKeyboard2"))
+                {
+                    Debug.Log("Interacting");
+                    Interact();
+                }
+                else if (Input.GetAxis("KillJoystick2") < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -83,7 +93,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("Kill2") == 0)
+                if (Input.GetAxis("KillJoystick2") == 0)
                 {
                     pressing = false;
                 }

@@ -29,18 +29,41 @@ public class PlayerController : MonoBehaviour {
         if (canMove)
         {
 
-            float moveHorizontal = Input.GetAxis("Horizontal" + playerNumber.ToString());
-            float moveVertical = Input.GetAxis("Vertical" + playerNumber.ToString());
+            // Horizontal input
+            float moveHorizontal;
+            float moveHorizontalJoystick = Input.GetAxis("HorizontalJoystick" + playerNumber.ToString());
+            float moveHorizontalKeyboard = Input.GetAxis("HorizontalKeyboard" + playerNumber.ToString());
+            if (Mathf.Abs(moveHorizontalJoystick) > Mathf.Abs(moveHorizontalKeyboard))
+            {
+                moveHorizontal = moveHorizontalJoystick;
+            }
+            else
+            {
+                moveHorizontal = moveHorizontalKeyboard;
+            }
+
+            // Vertical input
+            float moveVertical;
+            float moveVerticalJoystick = Input.GetAxis("VerticalJoystick" + playerNumber.ToString());
+            float moveVerticalKeyboard = Input.GetAxis("VerticalKeyboard" + playerNumber.ToString());
+            if (Mathf.Abs(moveVerticalJoystick) > Mathf.Abs(moveVerticalKeyboard))
+            {
+                moveVertical = moveVerticalJoystick;
+            }
+            else
+            {
+                moveVertical = moveVerticalKeyboard;
+            }
 
 
             Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
             controller.velocity = movment * speed;
 
-            if (Input.GetButtonDown("A"))
+            if (Input.GetButtonDown("AJoystick") || Input.GetButtonDown("AKeyboard"))
             {
                 insideRen.sharedMaterial = Green;
             }
-            else if (Input.GetButtonDown("B"))
+            else if (Input.GetButtonDown("BJoystick") || Input.GetButtonDown("BKeyboard"))
             {
                 insideRen.sharedMaterial = Red;
             }
