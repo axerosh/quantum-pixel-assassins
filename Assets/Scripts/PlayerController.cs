@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour {
 
     private RaycastHit groundHit;
 
-    MeshRenderer ren;
-
     public Material Red;
     public Material Green;
 
@@ -21,6 +19,9 @@ public class PlayerController : MonoBehaviour {
     
     public bool canMove = true;
     private Rigidbody2D controller;
+
+    private Animator animator;
+    private MeshRenderer insideRen;
 
     void Update()
     {
@@ -36,11 +37,11 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetButtonDown("A"))
             {
-                ren.sharedMaterial = Green;
+                insideRen.sharedMaterial = Green;
             }
             else if (Input.GetButtonDown("B"))
             {
-                ren.sharedMaterial = Red;
+                insideRen.sharedMaterial = Red;
             }
         }
 
@@ -48,13 +49,15 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawRay(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1));
         if (Physics.Raycast(transform.position + new Vector3(0, 0, 0.4f), new Vector3(0, 0, 1), out groundHit, 100))
         {
-            if (groundHit.transform.gameObject.GetComponent<Renderer>().sharedMaterial == gameObject.GetComponent<Renderer>().sharedMaterial)
+            if (groundHit.transform.gameObject.GetComponent<Renderer>().sharedMaterial == insideRen.sharedMaterial)
             {
                 hidden = true;
+                animator.SetBool("hidden", true);
             }
             else
             {
                 hidden = false;
+                animator.SetBool("hidden", false);
             }
         }
 
@@ -63,9 +66,10 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         controller = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
-        ren = GetComponent<MeshRenderer>();
-        ren.enabled = true;
+        insideRen = gameObject.transform.Find("Inside").GetComponent<MeshRenderer>();
+        insideRen.enabled = true;
 
         GameObject outline = gameObject.transform.Find("Outline").gameObject;
 
