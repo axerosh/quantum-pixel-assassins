@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour {
                 hidden = false;
                 animator.SetBool("hidden", false);
             }
+        }
+
+        if (Input.GetButtonDown("Start"))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
     }
