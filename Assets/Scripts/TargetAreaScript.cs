@@ -8,14 +8,17 @@ public class TargetAreaScript : MonoBehaviour {
 
     private int numberOfPlayersInZone;
 
-    private bool startedKilling = false;
+    public bool startedKilling = false;
     
     private TargetController targetController;
+
+    private GameObject[] players;
 
     // Use this for initialization
     void Start () {
         numberOfPlayersInZone = 0;
         targetController = GameObject.Find("Target").GetComponent<TargetController>();
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -53,7 +56,8 @@ public class TargetAreaScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
         if (!startedKilling && numberOfPlayersInZone == 2)
         {
@@ -72,6 +76,8 @@ public class TargetAreaScript : MonoBehaviour {
             {
                 targetController.onPlayer1KillRelease();
 
+
+
                 if (Input.GetAxis("Kill2") < 0)
                 {
                     if (Input.GetAxis("Kill1") < 0)
@@ -89,7 +95,8 @@ public class TargetAreaScript : MonoBehaviour {
                 }
             }
         }
-	}
+
+    }
 
     private void Kill()
     {
@@ -100,5 +107,10 @@ public class TargetAreaScript : MonoBehaviour {
 
         Destroy(gameObject);
         startedKilling = true;
+
+        foreach (GameObject g in players)
+        {
+            g.GetComponent<PlayerController>().preventMove();
+        }
     }
 }

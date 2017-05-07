@@ -26,7 +26,7 @@ public class guardPatrolController : MonoBehaviour {
             goals.Add(child.position);
         }
 
-        Invoke("startMove", standTime);
+        Invoke("startMove", startTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
