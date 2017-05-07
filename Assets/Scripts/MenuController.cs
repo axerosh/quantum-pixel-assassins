@@ -24,11 +24,11 @@ public class MenuController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") == 0)
+        if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") == 0)
         {
             buttonReset1 = true;
         }
-        if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") == 0)
+        if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") == 0)
         {
             buttonReset2 = true;
         }
@@ -44,12 +44,12 @@ public class MenuController : MonoBehaviour {
 
         if (buttonReset1)
         {
-            if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") < -0.5)
+            if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") < -0.5)
             {
                 buttonReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") > 0.5)
             {
                 buttonReset1 = false;
                 moveSelection(-1);
@@ -57,12 +57,12 @@ public class MenuController : MonoBehaviour {
         }
         if (buttonReset2)
         {
-            if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") < -0.5)
+            if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") < -0.5)
             {
                 buttonReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") > 0.5)
             {
                 buttonReset2 = false;
                 moveSelection(-1);

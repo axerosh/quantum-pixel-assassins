@@ -33,11 +33,11 @@ public class LevelSelectorController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") == 0 && Input.GetAxis("Player 1: Move Horizontal (Buttons/Keys)") == 0)
+        if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") == 0 && Input.GetAxis("Player 1: Move Horizontal (Button/Key)") == 0)
         {
             buttonReset1 = true;
         }
-        if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") == 0 && Input.GetAxis("Player 2: Move Horizontal (Buttons/Keys)") == 0)
+        if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") == 0 && Input.GetAxis("Player 2: Move Horizontal (Button/Key)") == 0)
         {
             buttonReset2 = true;
         }
@@ -52,22 +52,22 @@ public class LevelSelectorController : MonoBehaviour
 
         if (buttonReset1)
         {
-            if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") < -0.5)
+            if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") < -0.5)
             {
                 buttonReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Player 1: Move Vertical (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 1: Move Vertical (Button/Key)") > 0.5)
             {
                 buttonReset1 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("Player 1: Move Horizontal (Buttons/Keys)") < -0.5)
+            else if (Input.GetAxis("Player 1: Move Horizontal (Button/Key)") < -0.5)
             {
                 buttonReset1 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("Player 1: Move Horizontal (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 1: Move Horizontal (Button/Key)") > 0.5)
             {
                 buttonReset1 = false;
                 moveSelection(-4);
@@ -75,22 +75,22 @@ public class LevelSelectorController : MonoBehaviour
         }
         if (buttonReset2)
         {
-            if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") < -0.5)
+            if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") < -0.5)
             {
                 buttonReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("Player 2: Move Vertical (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 2: Move Vertical (Button/Key)") > 0.5)
             {
                 buttonReset2 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("Player 2: Move Horizontal (Buttons/Keys)") < -0.5)
+            else if (Input.GetAxis("Player 2: Move Horizontal (Button/Key)") < -0.5)
             {
                 buttonReset2 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("Player 2: Move Horizontal (Buttons/Keys)") > 0.5)
+            else if (Input.GetAxis("Player 2: Move Horizontal (Button/Key)") > 0.5)
             {
                 buttonReset2 = false;
                 moveSelection(-4);

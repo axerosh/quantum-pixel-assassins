@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
             // Horizontal input
             float moveHorizontal;
             float moveHorizontalAnalog = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Horizontal (Analog)");
-            float moveHorizontalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Horizontal (Buttons/Keys)");
+            float moveHorizontalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Horizontal (Button/Key)");
             if (Mathf.Abs(moveHorizontalAnalog) >= Mathf.Abs(moveHorizontalButton))
             {
                 moveHorizontal = moveHorizontalAnalog;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
             // Vertical input
             float moveVertical;
             float moveVerticalAnalog = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Vertical (Analog)");
-            float moveVerticalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Vertical (Buttons/Keys)");
+            float moveVerticalButton = Input.GetAxis("Player " + playerNumber.ToString() + ": Move Vertical (Button/Key)");
             if (Mathf.Abs(moveVerticalAnalog) >= Mathf.Abs(moveVerticalButton))
             {
                 moveVertical = moveVerticalAnalog;
