@@ -20,7 +20,7 @@ public class LevelSelectorController : MonoBehaviour
     public string Level8;
 
 
-    private bool joyReset1, joyReset2 = true;
+    private bool keyReset1, keyReset2, joyReset1, joyReset2 = true;
 
     // Use this for initialization
     void Start()
@@ -32,108 +32,146 @@ public class LevelSelectorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("VerticalKeyboard1") < 0 || Input.GetAxis("VerticalKeyboard2") < 0)
-        {
-            moveSelection(1);
-        }
-        else if (Input.GetAxis("VerticalKeyboard1") > 0 || Input.GetAxis("VerticalKeyboard2") > 0)
-        {
-            moveSelection(-1);
-        }
-        else if (Input.GetAxis("VerticalKeyboard1") < 0 || Input.GetAxis("VerticalKeyboard2") < 0)
-        {
-            moveSelection(4);
-        }
-        else if (Input.GetAxis("VerticalKeyboard1") > 0 || Input.GetAxis("VerticalKeyboard2") > 0)
-        {
-            moveSelection(-4);
-        }
 
-        if (Input.GetAxis("VerticalController1") == 0 && Input.GetAxis("HorizontalController1") == 0)
+        if (Input.GetAxis("VerticalKeyboard1") == 0 && Input.GetAxis("HorizontalKeyboard1") == 0)
+        {
+            keyReset1 = true;
+        }
+        if (Input.GetAxis("VerticalKeyboard2") == 0 && Input.GetAxis("HorizontalKeyboard2") == 0)
+        {
+            keyReset2 = true;
+        }
+        if (Input.GetAxis("VerticalJoystick1") == 0 && Input.GetAxis("HorizontalJoystick1") == 0)
         {
             joyReset1 = true;
         }
-        if (Input.GetAxis("VerticalController2") == 0 && Input.GetAxis("HorizontalController2") == 0)
+        if (Input.GetAxis("VerticalJoystick2") == 0 && Input.GetAxis("HorizontalJoystick2") == 0)
         {
             joyReset2 = true;
         }
 
-        if (joyReset1)
+        if (keyReset1)
         {
-            if (Input.GetAxis("VerticalController1") < -0.5 || Input.GetAxis("VerticalController1") < -0.5)
+            if (Input.GetAxis("VerticalKeyboard1") < -0.5)
             {
-                joyReset1 = false;
+                keyReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("VerticalController1") > 0.5)
+            else if (Input.GetAxis("VerticalKeyboard1") > 0.5)
             {
-                joyReset1 = false;
+                keyReset1 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("HorizontalController1") < -0.5)
+            else if (Input.GetAxis("HorizontalKeyboard1") < -0.5)
             {
-                joyReset1 = false;
+                keyReset1 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("HorizontalController1") > 0.5)
+            else if (Input.GetAxis("HorizontalKeyboard1") > 0.5)
             {
-                joyReset1 = false;
+                keyReset1 = false;
                 moveSelection(-4);
             }
         }
-        if (joyReset2)
+        if (keyReset2)
         {
-            if (Input.GetAxis("VerticalController2") < -0.5)
+            if (Input.GetAxis("VerticalKeyboard2") < -0.5)
             {
-                joyReset2 = false;
+                keyReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("VerticalController2") > 0.5)
+            else if (Input.GetAxis("VerticalKeyboard2") > 0.5)
             {
-                joyReset2 = false;
+                keyReset2 = false;
                 moveSelection(-1);
             }
-            else if (Input.GetAxis("HorizontalController2") < -0.5)
+            else if (Input.GetAxis("HorizontalKeyboard2") < -0.5)
             {
-                joyReset2 = false;
+                keyReset2 = false;
                 moveSelection(4);
             }
-            else if (Input.GetAxis("HorizontalController2") > 0.5)
+            else if (Input.GetAxis("HorizontalKeyboard2") > 0.5)
             {
-                joyReset2 = false;
+                keyReset2 = false;
                 moveSelection(-4);
             }
-        }
-
-
-        if (Input.GetButtonDown("AController") || Input.GetButtonDown("AKeyboard"))
-        {
-            switch (curSelection)
+            if (joyReset1)
             {
-                case 0:
-                    SceneManager.LoadScene(Level1);
-                    break;
-                case 1:
-                    SceneManager.LoadScene(Level2);
-                    break;
-                case 2:
-                    SceneManager.LoadScene(Level3);
-                    break;
-                case 3:
-                    SceneManager.LoadScene(Level4);
-                    break;
-                case 4:
-                    SceneManager.LoadScene(Level5);
-                    break;
-                case 5:
-                    SceneManager.LoadScene(Level6);
-                    break;
-                case 6:
-                    SceneManager.LoadScene(Level7);
-                    break;
-                case 7:
-                    SceneManager.LoadScene(Level8);
-                    break;
+                if (Input.GetAxis("VerticalJoystick1") < -0.5)
+                {
+                    joyReset1 = false;
+                    moveSelection(1);
+                }
+                else if (Input.GetAxis("VerticalJoystick1") > 0.5)
+                {
+                    joyReset1 = false;
+                    moveSelection(-1);
+                }
+                else if (Input.GetAxis("HorizontalJoystick1") < -0.5)
+                {
+                    joyReset1 = false;
+                    moveSelection(4);
+                }
+                else if (Input.GetAxis("HorizontalJoystick1") > 0.5)
+                {
+                    joyReset1 = false;
+                    moveSelection(-4);
+                }
+            }
+            if (joyReset2)
+            {
+                if (Input.GetAxis("VerticalJoystick2") < -0.5)
+                {
+                    joyReset2 = false;
+                    moveSelection(1);
+                }
+                else if (Input.GetAxis("VerticalJoystick2") > 0.5)
+                {
+                    joyReset2 = false;
+                    moveSelection(-1);
+                }
+                else if (Input.GetAxis("HorizontalJoystick2") < -0.5)
+                {
+                    joyReset2 = false;
+                    moveSelection(4);
+                }
+                else if (Input.GetAxis("HorizontalJoystick2") > 0.5)
+                {
+                    joyReset2 = false;
+                    moveSelection(-4);
+                }
+            }
+
+
+            if (Input.GetButtonDown("AJoystick") || Input.GetButtonDown("AKeyboard"))
+            {
+                switch (curSelection)
+                {
+                    case 0:
+                        SceneManager.LoadScene(Level1);
+                        break;
+                    case 1:
+                        SceneManager.LoadScene(Level2);
+                        break;
+                    case 2:
+                        SceneManager.LoadScene(Level3);
+                        break;
+                    case 3:
+                        SceneManager.LoadScene(Level4);
+                        break;
+                    case 4:
+                        SceneManager.LoadScene(Level5);
+                        break;
+                    case 5:
+                        SceneManager.LoadScene(Level6);
+                        break;
+                    case 6:
+                        SceneManager.LoadScene(Level7);
+                        break;
+                    case 7:
+                        SceneManager.LoadScene(Level8);
+                        break;
+                }
             }
         }
     }
