@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour {
 
             // Horizontal input
             float moveHorizontal;
-            float moveHorizontalAnalog = Input.GetAxis("P" + playerNumber.ToString() + ": Move X (Analog)");
-            float moveHorizontalButton = Input.GetAxis("P" + playerNumber.ToString() + ": Move X (Key/Button)");
+            float moveHorizontalAnalog = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal axis"));
+            float moveHorizontalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal key"));
             if (Mathf.Abs(moveHorizontalAnalog) >= Mathf.Abs(moveHorizontalButton))
             {
                 moveHorizontal = moveHorizontalAnalog;
@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour {
 
             // Vertical input
             float moveVertical;
-            float moveVerticalAnalog = Input.GetAxis("P" + playerNumber.ToString() + ": Move Y (Analog)");
-            float moveVerticalButton = Input.GetAxis("P" + playerNumber.ToString() + ": Move Y (Key/Button)");
+            float moveVerticalAnalog = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical axis"));
+            float moveVerticalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical key"));
             if (Mathf.Abs(moveVerticalAnalog) >= Mathf.Abs(moveVerticalButton))
             {
                 moveVertical = moveVerticalAnalog;
@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour {
             Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
             controller.velocity = movment * speed;
 
-            if (Input.GetButtonDown("Turn Green"))
+            if (Input.GetButtonDown(InputNames.GetName("green")))
             {
                 insideRen.sharedMaterial = Green;
             }
-            else if (Input.GetButtonDown("Turn Red"))
+            else if (Input.GetButtonDown(InputNames.GetName("red")))
             {
                 insideRen.sharedMaterial = Red;
             }
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonDown("Menu"))
+        if (Input.GetButtonDown(InputNames.GetName("menu")))
         {
             SceneManager.LoadScene("MainMenu");
         }

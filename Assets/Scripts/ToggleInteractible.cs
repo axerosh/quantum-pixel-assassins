@@ -51,12 +51,12 @@ public class ToggleInteractible : MonoBehaviour {
         {
             if (g.GetComponent<PlayerController>().playerNumber == 1)
             {
-                if (Input.GetButtonDown("P1: Interact/Erase (Key/Button)"))
+                if (Input.GetButtonDown(InputNames.GetName("p1 interact key")))
                 {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis("P1: Interact/Erase (Analog)") < 0 && !pressing)
+                else if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -68,7 +68,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("P1: Interact/Erase (Analog)") == 0)
+                if (Input.GetAxis(InputNames.GetName("p1 interact axis")) == 0)
                 {
                     pressing = false;
                 }
@@ -76,12 +76,12 @@ public class ToggleInteractible : MonoBehaviour {
 
             if (g.GetComponent<PlayerController>().playerNumber == 2)
             {
-                if (Input.GetButtonDown("P2: Interact/Erase (Key/Button)"))
+                if (Input.GetButtonDown(InputNames.GetName("p2 interact key")))
                 {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis("P2: Interact/Erase (Analog)") < 0 && !pressing)
+                else if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -93,7 +93,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("P2: Interact/Erase (Analog)") == 0)
+                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) == 0)
                 {
                     pressing = false;
                 }

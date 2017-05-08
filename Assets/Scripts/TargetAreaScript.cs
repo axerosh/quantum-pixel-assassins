@@ -61,9 +61,9 @@ public class TargetAreaScript : MonoBehaviour {
 
         if (!startedKilling && numberOfPlayersInZone == 2)
         {
-            if (Input.GetAxis("P1: Interact/Erase (Analog)") < 0 || Input.GetButton("P1: Interact/Erase (Key/Button)"))
+            if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
             {
-                if (Input.GetAxis("P2: Interact/Erase (Analog)") < 0 || Input.GetButton("P2: Interact/Erase (Key/Button)"))
+                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
                 {
                     Kill();
                 }
@@ -78,9 +78,9 @@ public class TargetAreaScript : MonoBehaviour {
 
 
 
-                if (Input.GetAxis("P2: Interact/Erase (Analog)") < 0 || Input.GetButton("P2: Interact/Erase (Key/Button)"))
+                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
                 {
-                    if (Input.GetAxis("P1: Interact/Erase (Analog)") < 0 || Input.GetButton("P1: Interact/Erase (Key/Button)"))
+                    if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
                     {
                         Kill();
                     }
