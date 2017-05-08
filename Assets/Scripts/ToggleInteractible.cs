@@ -51,12 +51,12 @@ public class ToggleInteractible : MonoBehaviour {
         {
             if (g.GetComponent<PlayerController>().playerNumber == 1)
             {
-                if (Input.GetButtonDown("Player 1: Use Button/Eraser (Button/Key)"))
+                if (Input.GetButtonDown("P1: Interact/Erase (Key/Button)"))
                 {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis("Player 1: Use Button/Eraser (Analog)") < 0 && !pressing)
+                else if (Input.GetAxis("P1: Interact/Erase (Analog)") < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -68,7 +68,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("Player 1: Use Button/Eraser (Analog)") == 0)
+                if (Input.GetAxis("P1: Interact/Erase (Analog)") == 0)
                 {
                     pressing = false;
                 }
@@ -76,12 +76,12 @@ public class ToggleInteractible : MonoBehaviour {
 
             if (g.GetComponent<PlayerController>().playerNumber == 2)
             {
-                if (Input.GetButtonDown("Player 2: Use Button/Eraser (Button/Key)"))
+                if (Input.GetButtonDown("P2: Interact/Erase (Key/Button)"))
                 {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis("Player 2: Use Button/Eraser (Analog)") < 0 && !pressing)
+                else if (Input.GetAxis("P2: Interact/Erase (Analog)") < 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -93,7 +93,7 @@ public class ToggleInteractible : MonoBehaviour {
                 }
 
 
-                if (Input.GetAxis("Player 2: Use Button/Eraser (Analog)") == 0)
+                if (Input.GetAxis("P2: Interact/Erase (Analog)") == 0)
                 {
                     pressing = false;
                 }
