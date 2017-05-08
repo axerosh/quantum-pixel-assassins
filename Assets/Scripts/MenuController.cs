@@ -24,32 +24,32 @@ public class MenuController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetAxis("P1: Move Y (Key/Button)") == 0)
+        if (Input.GetAxis(InputNames.GetName("p1 vertical key")) == 0)
         {
             buttonReset1 = true;
         }
-        if (Input.GetAxis("P2: Move Y (Key/Button)") == 0)
+        if (Input.GetAxis(InputNames.GetName("p2 vertical key")) == 0)
         {
             buttonReset2 = true;
         }
 
-        if (Input.GetAxis("P1: Move Y (Analog)") == 0)
+        if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) == 0)
         {
             analogReset1 = true;
         }
-        if (Input.GetAxis("P2: Move Y (Analog)") == 0)
+        if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) == 0)
         {
             analogReset2 = true;
         }
 
         if (buttonReset1)
         {
-            if (Input.GetAxis("P1: Move Y (Key/Button)") < -0.5)
+            if (Input.GetAxis(InputNames.GetName("p1 vertical key")) < -0.5)
             {
                 buttonReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("P1: Move Y (Key/Button)") > 0.5)
+            else if (Input.GetAxis(InputNames.GetName("p1 vertical key")) > 0.5)
             {
                 buttonReset1 = false;
                 moveSelection(-1);
@@ -57,12 +57,12 @@ public class MenuController : MonoBehaviour {
         }
         if (buttonReset2)
         {
-            if (Input.GetAxis("P2: Move Y (Key/Button)") < -0.5)
+            if (Input.GetAxis(InputNames.GetName("p2 vertical key")) < -0.5)
             {
                 buttonReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("P2: Move Y (Key/Button)") > 0.5)
+            else if (Input.GetAxis(InputNames.GetName("p2 vertical key")) > 0.5)
             {
                 buttonReset2 = false;
                 moveSelection(-1);
@@ -70,12 +70,12 @@ public class MenuController : MonoBehaviour {
         }
         if (analogReset1)
         {
-            if (Input.GetAxis("P1: Move Y (Analog)") < -0.5)
+            if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) < -0.5)
             {
                 analogReset1 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("P1: Move Y (Analog)") > 0.5)
+            else if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) > 0.5)
             {
                 analogReset1 = false;
                 moveSelection(-1);
@@ -83,19 +83,19 @@ public class MenuController : MonoBehaviour {
         }
         if (analogReset2)
         {
-            if (Input.GetAxis("P2: Move Y (Analog)") < -0.5)
+            if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) < -0.5)
             {
                 analogReset2 = false;
                 moveSelection(1);
             }
-            else if (Input.GetAxis("P2: Move Y (Analog)") > 0.5)
+            else if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) > 0.5)
             {
                 analogReset2 = false;
                 moveSelection(-1);
             }
         }
 
-        if (Input.GetButtonDown("Accept"))
+        if (Input.GetButtonDown(InputNames.GetName("accept")))
         {
             switch (curSelection)
             {
