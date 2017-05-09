@@ -400,9 +400,9 @@ GUIText:
   m_GameObject: {fileID: 1999540585}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'MUSIC BY:
+  m_Text: 'MUSIC:
 
-    WIZWARS'
+    WIZWARS - INTERGALACTIC DISKO DANCE PARTY'
   m_Anchor: 4
   m_Alignment: 1
   m_PixelOffset: {x: 2383.1, y: 833.86}
