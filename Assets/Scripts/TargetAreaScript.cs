@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetAreaScript : MonoBehaviour {
+public class TargetAreaScript : MonoBehaviour
+{
 
     public GameObject Eraser;
 
     private int numberOfPlayersInZone;
 
     public bool startedKilling = false;
-    
+
     private TargetController targetController;
 
     private GameObject[] players;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         numberOfPlayersInZone = 0;
         targetController = GameObject.Find("Target").GetComponent<TargetController>();
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -61,9 +63,9 @@ public class TargetAreaScript : MonoBehaviour {
 
         if (!startedKilling && numberOfPlayersInZone == 2)
         {
-            if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
+            if (Input.GetAxis(InputNames.GetName("p1 interact axis")) > 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
             {
-                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
+                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) > 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
                 {
                     Kill();
                 }
@@ -78,9 +80,9 @@ public class TargetAreaScript : MonoBehaviour {
 
 
 
-                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
+                if (Input.GetAxis(InputNames.GetName("p2 interact axis")) > 0 || Input.GetButton(InputNames.GetName("p2 interact key")))
                 {
-                    if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
+                    if (Input.GetAxis(InputNames.GetName("p1 interact axis")) > 0 || Input.GetButton(InputNames.GetName("p1 interact key")))
                     {
                         Kill();
                     }

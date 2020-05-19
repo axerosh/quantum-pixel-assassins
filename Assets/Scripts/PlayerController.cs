@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     public bool hidden;
     public int playerNumber;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     public Material Player2Outline;
 
     public float speed = 3.0F;
-    
+
     public bool canMove = true;
     private Rigidbody2D controller;
 
@@ -32,12 +33,14 @@ public class PlayerController : MonoBehaviour {
             // Horizontal input
             float moveHorizontal;
             float moveHorizontalAnalog = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal axis"));
-            float moveHorizontalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal key"));
-            if (Mathf.Abs(moveHorizontalAnalog) >= Mathf.Abs(moveHorizontalButton))
+            moveHorizontal = moveHorizontalAnalog;
+            float moveHorizontalAnalogAlt = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal axis alt"));
+            if (Mathf.Abs(moveHorizontalAnalogAlt) >= Mathf.Abs(moveHorizontal))
             {
-                moveHorizontal = moveHorizontalAnalog;
+                moveHorizontal = moveHorizontalAnalogAlt;
             }
-            else
+            float moveHorizontalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " horizontal key"));
+            if (Mathf.Abs(moveHorizontalButton) >= Mathf.Abs(moveHorizontal))
             {
                 moveHorizontal = moveHorizontalButton;
             }
@@ -45,19 +48,21 @@ public class PlayerController : MonoBehaviour {
             // Vertical input
             float moveVertical;
             float moveVerticalAnalog = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical axis"));
-            float moveVerticalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical key"));
-            if (Mathf.Abs(moveVerticalAnalog) >= Mathf.Abs(moveVerticalButton))
+            moveVertical = moveVerticalAnalog;
+            float moveVerticalAnalogAlt = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical axis alt"));
+            if (Mathf.Abs(moveVerticalAnalogAlt) >= Mathf.Abs(moveVertical))
             {
-                moveVertical = moveVerticalAnalog;
+                moveVertical = moveVerticalAnalogAlt;
             }
-            else
+            float moveVerticalButton = Input.GetAxis(InputNames.GetName("p" + playerNumber.ToString() + " vertical key"));
+            if (Mathf.Abs(moveVerticalButton) >= Mathf.Abs(moveVertical))
             {
                 moveVertical = moveVerticalButton;
             }
 
 
-            Vector3 movment = new Vector3(moveHorizontal, moveVertical, 0);
-            controller.velocity = movment * speed;
+            Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0);
+            controller.velocity = movement * speed;
 
             if (Input.GetButtonDown(InputNames.GetName("green")))
             {
@@ -118,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 
     public void preventMove()
     {
-        controller.velocity = new Vector3(0,0,0);
+        controller.velocity = new Vector3(0, 0, 0);
         canMove = false;
     }
 }

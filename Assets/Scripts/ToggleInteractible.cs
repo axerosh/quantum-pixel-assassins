@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToggleInteractible : MonoBehaviour {
+public class ToggleInteractible : MonoBehaviour
+{
 
     public bool Toggled;
     private ArrayList players;
@@ -56,7 +57,7 @@ public class ToggleInteractible : MonoBehaviour {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis(InputNames.GetName("p1 interact axis")) < 0 && !pressing)
+                else if (Input.GetAxis(InputNames.GetName("p1 interact axis")) > 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -81,7 +82,7 @@ public class ToggleInteractible : MonoBehaviour {
                     Debug.Log("Interacting");
                     Interact();
                 }
-                else if (Input.GetAxis(InputNames.GetName("p2 interact axis")) < 0 && !pressing)
+                else if (Input.GetAxis(InputNames.GetName("p2 interact axis")) > 0 && !pressing)
                 {
                     pressing = true;
                     Debug.Log("Interacting");
@@ -100,7 +101,7 @@ public class ToggleInteractible : MonoBehaviour {
             }
         }
 
-        
+
 
     }
 

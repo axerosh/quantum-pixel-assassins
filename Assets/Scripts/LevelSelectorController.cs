@@ -20,7 +20,7 @@ public class LevelSelectorController : MonoBehaviour
     public string Level8;
 
 
-    private bool buttonReset1, buttonReset2, analogReset1, analogReset2 = true;
+    private bool buttonReset1, buttonReset2, analogReset1, analogReset2, analogAltReset1, analogAltReset2 = true;
 
     // Use this for initialization
     void Start()
@@ -41,6 +41,7 @@ public class LevelSelectorController : MonoBehaviour
         {
             buttonReset2 = true;
         }
+
         if (Input.GetAxis(InputNames.GetName("p1 horizontal axis")) == 0 && Input.GetAxis(InputNames.GetName("p1 vertical axis")) == 0)
         {
             analogReset1 = true;
@@ -48,6 +49,15 @@ public class LevelSelectorController : MonoBehaviour
         if (Input.GetAxis(InputNames.GetName("p2 horizontal axis")) == 0 && Input.GetAxis(InputNames.GetName("p2 vertical axis")) == 0)
         {
             analogReset2 = true;
+        }
+
+        if (Input.GetAxis(InputNames.GetName("p1 horizontal axis alt")) == 0 && Input.GetAxis(InputNames.GetName("p1 vertical axis alt")) == 0)
+        {
+            analogAltReset1 = true;
+        }
+        if (Input.GetAxis(InputNames.GetName("p2 horizontal axis alt")) == 0 && Input.GetAxis(InputNames.GetName("p2 vertical axis alt")) == 0)
+        {
+            analogAltReset2 = true;
         }
 
         if (buttonReset1)
@@ -95,83 +105,131 @@ public class LevelSelectorController : MonoBehaviour
                 buttonReset2 = false;
                 moveSelection(-4);
             }
-            if (analogReset1)
+        }
+
+        if (analogReset1)
+        {
+            if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) < -0.5)
             {
-                if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) < -0.5)
-                {
-                    analogReset1 = false;
-                    moveSelection(1);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) > 0.5)
-                {
-                    analogReset1 = false;
-                    moveSelection(-1);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis")) < -0.5)
-                {
-                    analogReset1 = false;
-                    moveSelection(4);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis")) > 0.5)
-                {
-                    analogReset1 = false;
-                    moveSelection(-4);
-                }
+                analogReset1 = false;
+                moveSelection(1);
             }
-            if (analogReset2)
+            else if (Input.GetAxis(InputNames.GetName("p1 vertical axis")) > 0.5)
             {
-                if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) < -0.5)
-                {
-                    analogReset2 = false;
-                    moveSelection(1);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) > 0.5)
-                {
-                    analogReset2 = false;
-                    moveSelection(-1);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis")) < -0.5)
-                {
-                    analogReset2 = false;
-                    moveSelection(4);
-                }
-                else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis")) > 0.5)
-                {
-                    analogReset2 = false;
-                    moveSelection(-4);
-                }
+                analogReset1 = false;
+                moveSelection(-1);
             }
+            else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis")) < -0.5)
+            {
+                analogReset1 = false;
+                moveSelection(4);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis")) > 0.5)
+            {
+                analogReset1 = false;
+                moveSelection(-4);
+            }
+        }
+        if (analogReset2)
+        {
+            if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) < -0.5)
+            {
+                analogReset2 = false;
+                moveSelection(1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 vertical axis")) > 0.5)
+            {
+                analogReset2 = false;
+                moveSelection(-1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis")) < -0.5)
+            {
+                analogReset2 = false;
+                moveSelection(4);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis")) > 0.5)
+            {
+                analogReset2 = false;
+                moveSelection(-4);
+            }
+        }
+
+        if (analogAltReset1)
+        {
+            if (Input.GetAxis(InputNames.GetName("p1 vertical axis alt")) < -0.5)
+            {
+                analogAltReset1 = false;
+                moveSelection(1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p1 vertical axis alt")) > 0.5)
+            {
+                analogAltReset1 = false;
+                moveSelection(-1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis alt")) < -0.5)
+            {
+                analogAltReset1 = false;
+                moveSelection(4);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p1 horizontal axis alt")) > 0.5)
+            {
+                analogAltReset1 = false;
+                moveSelection(-4);
+            }
+        }
+        if (analogAltReset2)
+        {
+            if (Input.GetAxis(InputNames.GetName("p2 vertical axis alt")) < -0.5)
+            {
+                analogAltReset2 = false;
+                moveSelection(1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 vertical axis alt")) > 0.5)
+            {
+                analogAltReset2 = false;
+                moveSelection(-1);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis alt")) < -0.5)
+            {
+                analogAltReset2 = false;
+                moveSelection(4);
+            }
+            else if (Input.GetAxis(InputNames.GetName("p2 horizontal axis alt")) > 0.5)
+            {
+                analogAltReset2 = false;
+                moveSelection(-4);
+            }
+        }
 
 
-            if (Input.GetButtonDown(InputNames.GetName("accept")))
+        if (Input.GetButtonDown(InputNames.GetName("accept")))
+        {
+            switch (curSelection)
             {
-                switch (curSelection)
-                {
-                    case 0:
-                        SceneManager.LoadScene(Level1);
-                        break;
-                    case 1:
-                        SceneManager.LoadScene(Level2);
-                        break;
-                    case 2:
-                        SceneManager.LoadScene(Level3);
-                        break;
-                    case 3:
-                        SceneManager.LoadScene(Level4);
-                        break;
-                    case 4:
-                        SceneManager.LoadScene(Level5);
-                        break;
-                    case 5:
-                        SceneManager.LoadScene(Level6);
-                        break;
-                    case 6:
-                        SceneManager.LoadScene(Level7);
-                        break;
-                    case 7:
-                        SceneManager.LoadScene(Level8);
-                        break;
-                }
+                case 0:
+                    SceneManager.LoadScene(Level1);
+                    break;
+                case 1:
+                    SceneManager.LoadScene(Level2);
+                    break;
+                case 2:
+                    SceneManager.LoadScene(Level3);
+                    break;
+                case 3:
+                    SceneManager.LoadScene(Level4);
+                    break;
+                case 4:
+                    SceneManager.LoadScene(Level5);
+                    break;
+                case 5:
+                    SceneManager.LoadScene(Level6);
+                    break;
+                case 6:
+                    SceneManager.LoadScene(Level7);
+                    break;
+                case 7:
+                    SceneManager.LoadScene(Level8);
+                    break;
             }
         }
     }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class InputNames {
+public static class InputNames
+{
 
     private static Dictionary<string, string> inputNames = new Dictionary<string, string>();
     private static bool initialized = false;
@@ -30,6 +31,8 @@ public static class InputNames {
         inputNames.Add("p1 interact axis", "P1: Interact/Erase (Analog)");
         inputNames.Add("p1 horizontal axis", "P1: Move X (Analog)");
         inputNames.Add("p1 vertical axis", "P1: Move Y (Analog)");
+        inputNames.Add("p1 horizontal axis alt", "P1: Move X (Analog) Alt");
+        inputNames.Add("p1 vertical axis alt", "P1: Move Y (Analog) Alt");
 
         inputNames.Add("p2 interact key", "P2: Interact/Erase (Key/Button)");
         inputNames.Add("p2 horizontal key", "P2: Move X (Key/Button)");
@@ -37,6 +40,8 @@ public static class InputNames {
         inputNames.Add("p2 interact axis", "P2: Interact/Erase (Analog)");
         inputNames.Add("p2 horizontal axis", "P2: Move X (Analog)");
         inputNames.Add("p2 vertical axis", "P2: Move Y (Analog)");
+        inputNames.Add("p2 horizontal axis alt", "P2: Move X (Analog) Alt");
+        inputNames.Add("p2 vertical axis alt", "P2: Move Y (Analog) Alt");
 
         initialized = true;
     }
