@@ -351,7 +351,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 8a6c0efaf5ae8654cb7205c4c253e2dd, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 39
+  m_FontSize: 20
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -406,7 +406,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 8a6c0efaf5ae8654cb7205c4c253e2dd, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 39
+  m_FontSize: 20
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -455,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947802439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.303287, y: -1.114223, z: 4.3242188}
+  m_LocalPosition: {x: -0.303287, y: -1.07, z: 4.3242188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1696588898}
@@ -511,7 +511,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 8a6c0efaf5ae8654cb7205c4c253e2dd, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 39
+  m_FontSize: 20
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -699,12 +699,12 @@ GUIText:
 '
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 634.3, y: 1112.14}
+  m_PixelOffset: {x: 317.15, y: 556.07}
   m_LineSpacing: 0.54
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 8a6c0efaf5ae8654cb7205c4c253e2dd, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 87
+  m_FontSize: 43
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2
@@ -773,7 +773,7 @@ GUIText:
   m_TabSize: 4
   m_Font: {fileID: 12800000, guid: 8a6c0efaf5ae8654cb7205c4c253e2dd, type: 3}
   m_Material: {fileID: 0}
-  m_FontSize: 39
+  m_FontSize: 20
   m_FontStyle: 0
   m_Color:
     serializedVersion: 2

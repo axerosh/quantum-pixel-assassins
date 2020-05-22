@@ -19,7 +19,7 @@ public class MenuController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Screen.SetResolution(1920, 1080, false);
+        //Screen.SetResolution(1920, 1080, false);
         oldText = menuOptions[0].GetComponent<GUIText>().text;
         menuOptions[0].GetComponent<GUIText>().text = "-- " + oldText + " --";
     }
