@@ -153,9 +153,11 @@ public class MenuController : MonoBehaviour
                     //SceneManager.LoadScene(instructions.name);
                     SceneManager.LoadScene("Instructions");
                     break;
-                case 3:
-                    Application.Quit();
-                    break;
+                    /*
+                    case 3:
+                        Application.Quit();
+                        break;
+                    */
             }
         }
     }
